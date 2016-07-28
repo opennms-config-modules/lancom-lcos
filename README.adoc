@@ -20,7 +20,10 @@ The configuration adds capabilities for SNMP Traps with varbindings and performa
 .Download the configuration files
 [source, bash]
 ----
-curl https://github.com/opennms-config-modules/lancom-lcos9/archive/1.zip
+mkdir /tmp
+cd /tmp
+curl https://github.com/opennms-config-modules/lancom-lcos9/archive/lancom-lcos9-1.0.zip
+unzip lancom-lcos9-1.0.zip
 ----
 
 ## Enable SNMP trap support
@@ -28,31 +31,33 @@ curl https://github.com/opennms-config-modules/lancom-lcos9/archive/1.zip
 .Copy into OpenNMS configuration folders
 [source, bash]
 ----
-copy events/lancom-lcos9.events.xml into ${OPENNMS_HOME}/etc/events
+cp events/lancom-lcos9.events.xml ${OPENNMS_HOME}/etc/events
 ----
 
+.Add include statement as first entry in ${OPENNMS_HOME}/etc/eventconf.xml
 [source, bash]
 ----
-add <event-file>events/lancom-lcos9.events.xml</event-file> entry in ${OPENNMS_HOME}/etc/eventconf.xml
+<event-file>events/lancom-lcos9.events.xml</event-file>
 ----
 
 ## Enable performance data collection
 
 [source, bash]
 ----
-copy datacollection/lancom-lcos9.xml into ${OPENNMS_HOME}/etc/datacollection
+cp datacollection/lancom-lcos9.xml ${OPENNMS_HOME}/etc/datacollection
 ----
 
+.Add include statement in alphabetical order in ${OPENNMS_HOME}/etc/datacollection-config.xml
 [source, bash]
 ----
-add <include-collection dataCollectionGroup="LANCOM-LCOS9"/> entry in ${OPENNMS_HOME}/etc/datacollection-config.xml
+<include-collection dataCollectionGroup="LANCOM-LCOS9"/>
 ----
 
 ## Add performance graphs
 
 [source, bash]
 ----
-copy snmp-graphs.properties.d/lancom-graph.properties into ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
+cp snmp-graph.properties.d/lancom-graph.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
 ----
 
 # License & Authors
