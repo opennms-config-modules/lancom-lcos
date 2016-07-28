@@ -20,7 +20,7 @@ The configuration adds capabilities for SNMP Traps with varbindings and performa
 .Download the configuration files
 [source, bash]
 ----
-curl URL-HERE 
+curl https://github.com/opennms-config-modules/lancom-lcos9/archive/1.zip
 ----
 
 ## Enable SNMP trap support
