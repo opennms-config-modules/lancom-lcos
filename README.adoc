@@ -22,8 +22,8 @@ The configuration adds capabilities for SNMP Traps with varbindings and performa
 ----
 mkdir /tmp
 cd /tmp
-curl https://github.com/opennms-config-modules/lancom-lcos9/archive/lancom-lcos9-1.0.zip
-unzip lancom-lcos9-1.0.zip
+curl -L https://github.com/opennms-config-modules/lancom-lcos9/archive/master.tar.gz | tar xz
+cd lancom-lcos9-master
 ----
 
 ## Enable SNMP trap support
@@ -57,7 +57,7 @@ cp datacollection/lancom-lcos9.xml ${OPENNMS_HOME}/etc/datacollection
 
 [source, bash]
 ----
-cp snmp-graph.properties.d/lancom-graph.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
+cp graphs/lancom-lcos-graph.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
 ----
 
 # License & Authors
