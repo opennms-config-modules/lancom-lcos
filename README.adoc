@@ -70,5 +70,5 @@ ln -s ../modules-available/lancom-lcos9/events/*.xml .
 .Include in eventconf.xml
 [source, xml]
 ----
-<event-file>events/LANCOM-LCOS9.events.xml</event-file>
+<event-file>events/lancom-lcos9.events.xml</event-file>
 ----
