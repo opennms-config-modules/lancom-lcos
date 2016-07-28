@@ -1,74 +1,55 @@
 # LANCOM LCOS 9
 
-OpenNMS configuration module for LANCOM LCOS9 devices.
+OpenNMS configuration module to suppport monitoring for LANCOM devices with LCOS 9+ Firmware installed.
+The configuration adds capabilities for SNMP Traps with varbindings and performance data collection for the following metrics:
+
+- System load
+- CPU usage in percent
+- Memory usage in percent
+- Internal temperature
+- VPN statistics for peers and tunnels
+- Mail statistics: buffered, sent and discarded
 
 ## Requirements
 
-Running OpenNMS *NIX operating system
+- LANCOM device with LCOS 9+ Firmware installed
+- OpenNMS Meridian 2015+ or OpenNMS Horizon 14+
 
-- Download the configuration module from releases as tar.gz file
-- OpenNMS 1.12+
-- OpenNMS 14+
-- Network access with SNMP v1, v2c, v3
-- Optional: git
+## Download the configuration package
 
-Running OpenNMS on Windows operating system
-
-- Download the configuration module from releases as ZIP file
-- If linking is not possible, you can copy the files to the location
-- Optional: git
-
-## Installation
-
-.Download and install from GitHub
+.Download the configuration files
 [source, bash]
 ----
-cd $OPENNMS_HOME/etc/modules-available
-git clone https://github.com/opennms-config-modules/snmp-mib2.git
+curl URL-HERE 
+----
+
+## Enable SNMP trap support
+
+.Copy into OpenNMS configuration folders
+[source, bash]
+----
+instruction here to copy FILE to ${OPENNMS_HOME}/etc/events
+----
+
+[source, bash]
+----
+instruction here enable compiled trap mib in OpenNMS with include in eventconf.xml
+----
+
+## Enable performance data collection
+
+[source, bash]
+----
+instruction here to copy FILE to ${OPENNMS_HOME}/etc/datacollection
+----
+
+[source, bash]
+----
+instruction here to include in datacollection-config.xml
 ----
 
 # License & Authors
 
-- Author:: Marcel Fuhrmann
+- Author:: Marcel Fuhrmann <YOUR-MAIL-ADDRESS-HERE>
 
 Licensed under the GNU Affero General Public License 3+. You may obtain a copy of the License at http://www.gnu.org/licenses/agpl-3.0.html.
-
-
-### Datacollection
-
-.Install datacollection configuration
-[source, bash]
-----
-cd $OPENNMS_HOME/etc/datacollection
-ln -s ../modules-available/lancom-lco9/datacollection/*.xml .
-----
-
-.Include in datacollection-config.xml
-[source, xml]
-----
-<include-collection dataCollectionGroup="LANCOM-LCOS9"/>
-----
-
-### Graph report definitions
-
-.Install graph report definitions
-[source, bash]
-----
-cd $OPENNMS_HOME/etc/snmp-graph.properties.d
-ln -s ../modules-available/lancom-lcos9/snmp-graph.properties.d/*.properties .
-----
-
-### Event definitions
-
-.Install SNMP event definitions
-[source, bash]
-----
-cd $OPENNMS_HOME/etc/events
-ln -s ../modules-available/lancom-lcos9/events/*.xml .
-----
-
-.Include in eventconf.xml
-[source, xml]
-----
-<event-file>events/lancom-lcos9.events.xml</event-file>
-----
