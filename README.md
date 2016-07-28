@@ -1,4 +1,4 @@
-# lancom-lcos9
+# LANCOM LCOS 9
 
 OpenNMS configuration module for LANCOM LCOS9 devices.
 
@@ -9,7 +9,6 @@ Running OpenNMS *NIX operating system
 - Download the configuration module from releases as tar.gz file
 - OpenNMS 1.12+
 - OpenNMS 14+
-- LANCOM Devices
 - Network access with SNMP v1, v2c, v3
 - Optional: git
 
