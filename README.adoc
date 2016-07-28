@@ -66,3 +66,9 @@ ln -s ../modules-available/lancom-lcos9/snmp-graph.properties.d/*.properties .
 cd $OPENNMS_HOME/etc/events
 ln -s ../modules-available/lancom-lcos9/events/*.xml .
 ----
+
+.Include in eventconf.xml
+[source, xml]
+----
+<event-file>events/LANCOM-LCOS9.events.xml</event-file>
+----
