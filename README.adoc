@@ -28,28 +28,35 @@ curl URL-HERE
 .Copy into OpenNMS configuration folders
 [source, bash]
 ----
-instruction here to copy FILE to ${OPENNMS_HOME}/etc/events
+copy events/lancom-lcos9.events.xml into ${OPENNMS_HOME}/etc/events
 ----
 
 [source, bash]
 ----
-instruction here enable compiled trap mib in OpenNMS with include in eventconf.xml
+add <event-file>events/lancom-lcos9.events.xml</event-file> entry in ${OPENNMS_HOME}/etc/eventconf.xml
 ----
 
 ## Enable performance data collection
 
 [source, bash]
 ----
-instruction here to copy FILE to ${OPENNMS_HOME}/etc/datacollection
+copy datacollection/lancom-lcos9.xml into ${OPENNMS_HOME}/etc/datacollection
 ----
 
 [source, bash]
 ----
-instruction here to include in datacollection-config.xml
+add <include-collection dataCollectionGroup="LANCOM-LCOS9"/> entry in ${OPENNMS_HOME}/etc/datacollection-config.xml
+----
+
+## Add performance graphs
+
+[source, bash]
+----
+copy snmp-graphs.properties.d/lancom-graph.properties into ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
 ----
 
 # License & Authors
 
-- Author:: Marcel Fuhrmann <YOUR-MAIL-ADDRESS-HERE>
+- Author:: Marcel Fuhrmann <fuhrmann@n3rd.org>
 
 Licensed under the GNU Affero General Public License 3+. You may obtain a copy of the License at http://www.gnu.org/licenses/agpl-3.0.html.
