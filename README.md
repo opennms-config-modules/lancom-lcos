@@ -56,5 +56,14 @@ ln -s ../modules-available/lancom-lco9/datacollection/*.xml .
 [source, bash]
 ----
 cd $OPENNMS_HOME/etc/snmp-graph.properties.d
-ln -s ../modules-available/lancom-lcos9/graphs/*.properties .
+ln -s ../modules-available/lancom-lcos9/snmp-graph.properties.d/*.properties .
+----
+
+### Event definitions
+
+.Install SNMP event definitions
+[source, bash]
+----
+cd $OPENNMS_HOME/etc/events
+ln -s ../modules-available/lancom-lcos9/events/*.xml .
 ----
