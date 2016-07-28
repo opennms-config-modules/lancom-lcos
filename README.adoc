@@ -1,4 +1,4 @@
-# LANCOM LCOS 9
+# LANCOM LCOS
 
 OpenNMS configuration module to support monitoring for LANCOM devices with LCOS 9+ Firmware installed.
 The configuration adds capabilities for SNMP Traps with varbindings and performance data collection for the following metrics:
