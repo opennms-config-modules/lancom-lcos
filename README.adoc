@@ -1,4 +1,4 @@
-# LANCOM LCOS
+= LANCOM LCOS
 
 OpenNMS configuration module to support monitoring for LANCOM devices with LCOS 9+ Firmware installed.
 The configuration adds capabilities for SNMP Traps with varbindings and performance data collection for the following metrics:
@@ -10,59 +10,54 @@ The configuration adds capabilities for SNMP Traps with varbindings and performa
 - VPN statistics for peers and tunnels
 - Mail statistics: buffered, sent and discarded
 
-## Requirements
+== Requirements
 
 - LANCOM device with LCOS 9+ Firmware installed
 - OpenNMS Meridian 2015+ or OpenNMS Horizon 14+
 - Based on LANCOM LCOS MIB 9.20
 
-## Download the configuration package
+== Installation
 
-.Download the configuration files
+.Download and install from GitHub
 [source, bash]
 ----
-mkdir /tmp
-cd /tmp
-curl -L https://github.com/opennms-config-modules/lancom-lcos/archive/1.0.tar.gz | tar xz
-cd lancom-lcos-1.0
+mkdir ${HOME}/opennms-config-workspace
+cd ${HOME}/opennms-config-workspace
+git clone https://github.com/opennms-config-modules/lancom-lcos.git
 ----
 
-## Enable SNMP trap support
+=== Events
 
-.Copy into OpenNMS configuration folders
+.Install events
 [source, bash]
 ----
-cp events/lancom-lcos9.events.xml ${OPENNMS_HOME}/etc/events
+cp ${HOME}/opennms-config-workspace/lancom-lcos/events/*.xml ${OPENNMS_HOME}/etc/events
 ----
 
-.Add include statement as first entry in ${OPENNMS_HOME}/etc/eventconf.xml
-[source, bash]
+.Include in eventconf.xml
+[source, xml]
 ----
 <event-file>events/lancom-lcos9.events.xml</event-file>
 ----
 
-## Enable performance data collection
+=== Data Collection
 
+.Install datacollection configuration
 [source, bash]
 ----
-cp datacollection/lancom-lcos9.xml ${OPENNMS_HOME}/etc/datacollection
+cp ${HOME}/opennms-config-workspace/lancom-lcos/datacollection/*.xml ${OPENNMS_HOME}/etc/datacollection
 ----
 
-.Add include statement in alphabetical order in ${OPENNMS_HOME}/etc/datacollection-config.xml
-[source, bash]
+.Include in datacollection-config.xml
+[source, xml]
 ----
 <include-collection dataCollectionGroup="LANCOM-LCOS9"/>
 ----
 
-## Add performance graphs
+=== Graph Report Definitions
 
+.Install graph report definitions
 [source, bash]
 ----
-cp graphs/lancom-lcos-graph.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
+cp ${HOME}/opennms-config-workspace/lancom-lcos/graphs/*.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d
 ----
-
-# License & Authors
-
-- Author:: Marcel Fuhrmann <fuhrmann@n3rd.org>
-
-Licensed under the GNU Affero General Public License 3+. You may obtain a copy of the License at http://www.gnu.org/licenses/agpl-3.0.html.
